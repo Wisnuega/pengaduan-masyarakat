@@ -21,7 +21,7 @@ Route::get('/',[MasyarakatController::class,'index']);
 Route::get('pengaduan',[MasyarakatController::class,'pengaduan']);
 Route::post('pengaduan',[MasyarakatController::class,'komplain']);
 Route::get('laporan',[MasyarakatController::class,'lapor']);
-Route::post('laporan',[MasyarakatController::class,'laporan']);
+Route::get('filter',[MasyarakatController::class,'lapor']);
 
 // login & register
 Route::get('login',[LoginController::class,'login']);

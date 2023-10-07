@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Masyarakat;
 use App\Models\Pengaduan;
 use Illuminate\Http\Request;
 
@@ -25,9 +24,10 @@ class MasyarakatController extends Controller
 		]);
 		return back()->with('pesan','Pengaduan berhasil di sampaikan');
 	}
-	public function lapor(){
+	public function lapor(Request $request){
 		$data = new Pengaduan();
-		return view('masyarakat.laporan',['data'=>$data->where('status','0')->get()]);
+		$status = $request->input('pilih')?$request->input('pilih'):'0';
+		return view('masyarakat.laporan',['data'=>$data->where('status',$status)->get()]);
 	}
 
 }
