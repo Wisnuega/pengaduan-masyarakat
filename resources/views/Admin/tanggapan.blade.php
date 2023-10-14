@@ -8,7 +8,7 @@
 				<h3 class="card-title text-center my-1">Laporan Pengaduan</h3>
 	
 				{{-- form pengaduan masyarakat --}}
-				<form action="{{url('petugas/edit')}}" method="POST">
+				<form action="" method="POST">
 					@csrf
 					<div class="mb-3 mx-3">
 						<label for="nik" class="col-sm-3 col-form-label">NIK</label>
@@ -16,12 +16,11 @@
 					</div>
 	
 					<div class="mb-3 mx-3">
-						<label for="foto" class="col-sm-3 col-form-label">Foto</label>
-						<input class="form-control " type="file" id="foto" name="foto" multiple>
-					</div>
-	
-					<div class="mb-3 mx-3">
 						<label for="isi_laporan" class="col-sm-5 col-form-label">Isi Laporan</label>
+						<textarea class="form-control" id="isi_laporan" name="isi_laporan" rows="3"></textarea>
+					</div>
+					<div class="mb-3 mx-3">
+						<label for="isi_laporan" class="col-sm-5 col-form-label">Isi </label>
 						<textarea class="form-control" id="isi_laporan" name="isi_laporan" rows="3"></textarea>
 					</div>
 	
@@ -40,7 +39,6 @@
 			<thead>
 			  <tr>
 				<th scope="col">ID</th>
-				<th scope="col">Tanggal Pengaduan</th>
 				<th scope="col">NIK</th>
 				<th scope="col">Isi Laporan</th>
 				<th scope="col">aksi</th>
@@ -50,12 +48,11 @@
 				@foreach ($data as $item)          
 				<tr>
 				  <td scope="row">{{$item->id_pengaduan}}</td>
-				  <td>{{$item->tgl_pengaduan}}</td>
 				  <td>{{$item->nik}}</td>
 				  <td>{{$item->isi_laporan}}</td>
 
 				  <td>
-					<a href="{{url('edit')}}" type="submit" class="btn btn-warning"><i class="bi bi-pencil-square text-light"></i></a>
+					<a href="{{url('petugas/tanggapan/'.$item->id_pengaduan)}}" class="btn btn-warning"><i class="bi bi-pencil-square text-light"></i></a>
 				  </td>
 				</tr>
 				@endforeach

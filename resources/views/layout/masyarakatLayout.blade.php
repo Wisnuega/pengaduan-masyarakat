@@ -8,6 +8,7 @@
     <title>Pelayanan Masyarakat @yield('title')</title>
     <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap-icons.css">
+    @yield('css')
 </head>
 
 <body style="background-color: #D9E3FF;">
@@ -28,14 +29,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('pengaduan') }}">Pengaduan</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">Laporan</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{url('laporan')}}">0</a></li>
-                            <li><a class="dropdown-item" href="{{url('')}}">Proses</a></li>
-                            <li><a class="dropdown-item" href="{{url('')}}">Selesai</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('laporan')}}">Laporan</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ">
@@ -70,6 +65,7 @@
     </div>
     <!-- End Footer -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    @yield('js')
 </body>
 
 </html>

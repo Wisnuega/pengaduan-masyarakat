@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pengaduan;
 
+use App\Models\Tanggapan;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,7 +12,7 @@ class AdminController extends Controller
 	public function index() {
 		$data = new Pengaduan();
 		
-		return view('Admin.dashboard', ['data' => $data->where('status','0')->get()]);
+		return view('Admin.dashboard', ['data' => $data->all()]);
 	}
 	public function validasiStatus($id){
 		$data = new Pengaduan();
@@ -20,6 +21,7 @@ class AdminController extends Controller
 	}
 	public function tanggapan() {
 		$data = new Pengaduan();
+
 		return view('Admin.tanggapan',['data'=>$data->where('status','proses')->get()]);
 	}
 	public function registrasi() {

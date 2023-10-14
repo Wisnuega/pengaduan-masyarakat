@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Masyarakat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -42,7 +43,7 @@ class LoginController extends Controller
             'password'=>$request->password,
             'telp'=>$request->telp
         ]);
-        return back()->with('pesan','Anda Berhasil Registrasi');
+        return redirect('login')->with('pesan','Anda Berhasil Registrasi');
     }
 }
         

@@ -34,11 +34,8 @@ Route::post('registrasi',[LoginController::class,'simpan']);
 Route::get('petugas',[AdminController::class,'index']);
 Route::get('petugas/status/{id}',[AdminController::class,'validasiStatus']);
 Route::get('petugas/tanggapan',[AdminController::class,'tanggapan']);
-Route::post('petugas/tanggapan/{id}',[AdminController::class,'balasan']);
+Route::post('petugas/tanggapan/{id}',[AdminController::class,'balas']);
 Route::get('petugas/registrasi',[AdminController::class,'registrasi']);
 Route::get('petugas/laporan',[AdminController::class,'laporan']);
 Route::get('petugas/login',[AdminController::class,'login']);
 
-route::get('coba',function(){
-    return view('coba');
-});
