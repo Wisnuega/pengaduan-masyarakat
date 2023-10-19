@@ -30,13 +30,17 @@
                         <a class="nav-link" href="{{ url('pengaduan') }}">Pengaduan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('laporan')}}">Laporan</a>
+                        <a class="nav-link" href="{{ url('laporan') }}">Laporan</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('login') }}"><button type="button"
-                                class="btn btn-primary btn-sm">Login</button></a>
+                        @if (session('username'))
+                        <a class="btn btn-primary btn-sm" href="{{ url('logout') }}" >Logout</a>
+                        @else
+                        <a class="btn btn-primary btn-sm" href="{{ url('login') }}" >login</a>
+                            
+                        @endif
                     </li>
                 </ul>
             </div>

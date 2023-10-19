@@ -15,7 +15,7 @@
 				<div class="card-body">
 					<h2 class="card-title text-center mb-4 mt-2">Login</h2>
 
-					<form action="{{url('login')}}" method="post">
+					<form action="{{url('petugas/login')}}" method="post">
 						@csrf
 						<div class="col-12 my-3">
 							<label for="username" class="form-label">Username</label>
@@ -28,13 +28,8 @@
 							<input type="password" name="password" class="form-control" id="password" required>
 						</div>
 
-						<div class="col-12 pt-4 text-center ">
+						<div class="col-12 py-4 text-center ">
 							<button class="btn btn-light w-50" type="submit">Login</button>
-						</div>
-						<div class="col-12 text-center mt-3">
-							<p class="small mb-0">
-								Belum Punya Akun? <a href="{{url('registrasi')}}">Register Sekarang!!</a>
-							</p>
 						</div>
 					</form>
 				</div>

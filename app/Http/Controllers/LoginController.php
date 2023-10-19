@@ -15,6 +15,7 @@ class LoginController extends Controller
         $data = new Masyarakat();
         // cek username dan password ada fi database ato tidak
         if ($data->where('username',$request->input('username'))->where('password',$request->input('password'))->exists()) {
+            session(['username'=>$request->input('username')]);
             return redirect('/');
         }
         return back()->with('pesan','Username dan Password tidak terdaftar');
@@ -44,6 +45,10 @@ class LoginController extends Controller
             'telp'=>$request->telp
         ]);
         return redirect('login')->with('pesan','Anda Berhasil Registrasi');
+    }
+    public function logout(Request $request){
+        session(['username'=>$request->input('username')]);
+        return back();
     }
 }
         

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasyarakatController;
+use App\Http\Middleware\validasiMasyarakat;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 // Data Masyarakat
 Route::get('/',[MasyarakatController::class,'index']);
-Route::get('pengaduan',[MasyarakatController::class,'pengaduan']);
+Route::get('pengaduan',[MasyarakatController::class,'pengaduan'])->middleware(validasiMasyarakat::class);
 Route::post('pengaduan',[MasyarakatController::class,'komplain']);
-Route::get('laporan',[MasyarakatController::class,'lapor']);
+Route::get('laporan',[MasyarakatController::class,'lapor'])->middleware(validasiMasyarakat::class);
 Route::get('filter',[MasyarakatController::class,'lapor']);
 
 // login & register
@@ -28,6 +29,7 @@ Route::get('login',[LoginController::class,'login']);
 Route::post('login',[LoginController::class,'ceklogin']);
 Route::get('registrasi',[LoginController::class,'registrasi']);
 Route::post('registrasi',[LoginController::class,'simpan']);
+Route::get('logout',[LoginController::class,'logout']);
 
 
 // Data Admin
@@ -36,6 +38,8 @@ Route::get('petugas/status/{id}',[AdminController::class,'validasiStatus']);
 Route::get('petugas/tanggapan',[AdminController::class,'tanggapan']);
 Route::post('petugas/tanggapan/{id}',[AdminController::class,'balas']);
 Route::get('petugas/registrasi',[AdminController::class,'registrasi']);
-Route::get('petugas/laporan',[AdminController::class,'laporan']);
+Route::post('petugas/registrasi',[AdminController::class,'simpan']);
 Route::get('petugas/login',[AdminController::class,'login']);
+Route::post('petugas/login',[AdminController::class,'ceklogin']);
+Route::get('petugas/laporan',[AdminController::class,'laporan']);
 

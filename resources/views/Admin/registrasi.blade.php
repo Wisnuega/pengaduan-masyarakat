@@ -30,21 +30,12 @@
 					@endif
 
 					{{-- form --}}
-					<form action="{{url('registrasi')}}" method="post">
+					<form action="{{url('petugas/registrasi')}}" method="post">
 						@csrf
-						<div class="col-12 my-2">
-							<label for="nik" class="form-label">NIK</label>
-							<input type="number" name="nik" class="form-control" id="nik">
-							@error('nik')
-							<div class="form-text">
-								{{$message}}
-							</div>
-							@enderror
-						</div>
 
 						<div class="col-12 my-2">
-							<label for="nama" class="form-label">Nama</label>
-							<input type="text" name="nama" class="form-control" id="nama">
+							<label for="nama_petugas" class="form-label">Nama Petugas</label>
+							<input type="text" name="nama_petugas" class="form-control" id="nama_petugas">
 							@error('nama')
 							<div class="form-text">
 								{{$message}}
@@ -81,14 +72,22 @@
 							</div>
 							@enderror
 						</div>
-
-						<div class="col-12 pt-4 text-center">
-							<button class="btn btn-light w-50" type="submit">Registrasi</button>
+						
+						<div class="col-12 my-2">
+							<label for="level" class="form-label">Level</label>
+							<select class="form-select" aria-label="Default select example" name="level" id="level">
+								<option value="petugas">Petugas</option>
+								<option value="admin">Admin</option>
+							  </select>
+							@error('telp')
+							<div class="form-text">
+								{{$message}}
+							</div>
+							@enderror
 						</div>
-						<div class="col-12 text-center mt-2">
-							<p class="small mb-0">
-								Sudah Punya Akun? <a href="{{url('login')}}">Login Sekarang!!</a>
-							</p>
+
+						<div class="col-12 py-4 text-center">
+							<button class="btn btn-light w-50" type="submit">Registrasi</button>
 						</div>
 					</form>
 				</div>

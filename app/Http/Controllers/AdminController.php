@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pengaduan;
 
+use App\Models\Petugas;
 use App\Models\Tanggapan;
 use Illuminate\Http\Request;
 
@@ -27,11 +28,25 @@ class AdminController extends Controller
 	public function registrasi() {
 		return view('Admin.registrasi');
 	}
-	public function laporan() {
-		return view('Admin.laporan');
+	public function simpan(Request $request){
+		$data = new Petugas();
+
+		$data->create($request->all());
+		return redirect('petugas/login');
 	}
 	public function login() {
 		return view('Admin.login');
 	}
-
+	public function ceklogin(Request $request){
+		$data = new Petugas();
+		$data =  $data->where('username',$request->input('username'))->where('password',$request->input('password'));
+		if ($data->exists()) {
+			$data = $data->first();
+			session(['role'=>$data->level]);
+			return redirect('petugas');
+		}
+	}
+	public function laporan() {
+		return view('Admin.laporan');
+	}
 }
