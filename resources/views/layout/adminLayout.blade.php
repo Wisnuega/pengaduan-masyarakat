@@ -86,7 +86,7 @@
 						</li>
 
 						<li>
-							<a class="dropdown-item d-flex align-items-center" href="#">
+							<a class="dropdown-item d-flex align-items-center" href="{{url('petugas/logout')}}">
 								<i class="bi bi-box-arrow-right"></i>
 								<span>Sign Out</span>
 							</a>
@@ -122,12 +122,14 @@
 				</a>
 			</li><!-- End Contact Page Nav -->
 
-			{{-- <li class="nav-item">
+			@if (session('level') == 'admin')	
+			<li class="nav-item">
 				<a class="nav-link collapsed" href="{{url('petugas/registrasi')}}">
 					<i class="bi bi-card-list"></i>
 					<span>Registrasi</span>
 				</a>
-			</li><!-- End Register Page Nav --> --}}
+			</li><!-- End Register Page Nav -->
+			@endif
 
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="{{url('petugas/laporan')}}">

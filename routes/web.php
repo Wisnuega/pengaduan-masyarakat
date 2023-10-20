@@ -3,7 +3,9 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasyarakatController;
+use App\Http\Middleware\cekRolePetugas;
 use App\Http\Middleware\validasiMasyarakat;
+use App\Http\Middleware\validasiPetugas;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,13 +35,16 @@ Route::get('logout',[LoginController::class,'logout']);
 
 
 // Data Admin
-Route::get('petugas',[AdminController::class,'index']);
-Route::get('petugas/status/{id}',[AdminController::class,'validasiStatus']);
-Route::get('petugas/tanggapan',[AdminController::class,'tanggapan']);
-Route::post('petugas/tanggapan/{id}',[AdminController::class,'balas']);
-Route::get('petugas/registrasi',[AdminController::class,'registrasi']);
-Route::post('petugas/registrasi',[AdminController::class,'simpan']);
-Route::get('petugas/login',[AdminController::class,'login']);
-Route::post('petugas/login',[AdminController::class,'ceklogin']);
-Route::get('petugas/laporan',[AdminController::class,'laporan']);
+Route::prefix('petugas')->group(function () {
+    Route::get('/',[AdminController::class,'index'])->middleware(validasiPetugas::class,cekRolePetugas::class);
+    Route::get('/status/{id}',[AdminController::class,'validasiStatus']);
+    Route::get('/tanggapan',[AdminController::class,'tanggapan']);
+    Route::post('/tanggapan/{id}',[AdminController::class,'balas']);
+    Route::get('/registrasi',[AdminController::class,'registrasi']);
+    Route::post('/registrasi',[AdminController::class,'simpan']);
+    Route::get('/login',[AdminController::class,'login']);
+    Route::post('/login',[AdminController::class,'ceklogin']);
+    Route::get('/logout',[AdminController::class,'logout']);
+    Route::get('/laporan',[AdminController::class,'laporan']);
+});
 

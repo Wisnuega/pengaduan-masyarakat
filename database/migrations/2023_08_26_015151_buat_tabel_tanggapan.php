@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tanggapan',function(Blueprint $data){
-            $data->integer('id_tanggapan');
+            $data->integer('id_tanggapan')->autoIncrement();
             $data->integer('id_pengaduan');
             $data->date('tgl_tanggapan');
             $data->text('tanggapan');
             $data->integer('id_petugas');
-            $data->primary('id_tanggapan');
             $data->timestamps();
         });
     }

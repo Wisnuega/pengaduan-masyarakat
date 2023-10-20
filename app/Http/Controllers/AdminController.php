@@ -42,9 +42,14 @@ class AdminController extends Controller
 		$data =  $data->where('username',$request->input('username'))->where('password',$request->input('password'));
 		if ($data->exists()) {
 			$data = $data->first();
-			session(['role'=>$data->level]);
+			session(['dataPetugas'=>$data]);
+			session(['level'=>$data->level]);
 			return redirect('petugas');
 		}
+	}
+	public function logout(){
+		session()->flush();
+		return back();
 	}
 	public function laporan() {
 		return view('Admin.laporan');

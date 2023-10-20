@@ -47,7 +47,7 @@ class LoginController extends Controller
         return redirect('login')->with('pesan','Anda Berhasil Registrasi');
     }
     public function logout(Request $request){
-        session(['username'=>$request->input('username')]);
+        session()->flush();
         return back();
     }
 }

@@ -15,7 +15,7 @@ Dashboard
 		<table class="table" id="Table_dashboard">
 			<thead>
 				<tr>
-					<th scope="col">ID</th>
+					<th scope="col">{{session('coba')}}</th>
 					<th scope="col">Tanggal Pengaduan</th>
 					<th scope="col">NIK</th>
 					<th scope="col">Isi Laporan</th>
