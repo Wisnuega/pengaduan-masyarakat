@@ -43,7 +43,6 @@ class AdminController extends Controller
 		if ($data->exists()) {
 			$data = $data->first();
 			session(['dataPetugas'=>$data]);
-			session(['level'=>$data->level]);
 			return redirect('petugas');
 		}
 	}

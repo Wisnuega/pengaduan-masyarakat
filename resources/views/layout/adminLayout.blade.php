@@ -60,8 +60,8 @@
 
 					<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 						<li class="dropdown-header">
-							<h6>Kevin Anderson</h6>
-							<span>Web Designer</span>
+							<h6>{{session('dataPetugas')->username}}</h6>
+							<span>{{session('dataPetugas')->level}}</span>
 						</li>
 						<li>
 							<hr class="dropdown-divider">
@@ -122,7 +122,7 @@
 				</a>
 			</li><!-- End Contact Page Nav -->
 
-			@if (session('level') == 'admin')	
+			@if (session('dataPetugas')->level == 'admin')	
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="{{url('petugas/registrasi')}}">
 					<i class="bi bi-card-list"></i>

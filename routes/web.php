@@ -36,11 +36,11 @@ Route::get('logout',[LoginController::class,'logout']);
 
 // Data Admin
 Route::prefix('petugas')->group(function () {
-    Route::get('/',[AdminController::class,'index'])->middleware(validasiPetugas::class,cekRolePetugas::class);
+    Route::get('/',[AdminController::class,'index'])->middleware(validasiPetugas::class);
     Route::get('/status/{id}',[AdminController::class,'validasiStatus']);
     Route::get('/tanggapan',[AdminController::class,'tanggapan']);
     Route::post('/tanggapan/{id}',[AdminController::class,'balas']);
-    Route::get('/registrasi',[AdminController::class,'registrasi']);
+    Route::get('/registrasi',[AdminController::class,'registrasi'])->middleware(cekRolePetugas::class);
     Route::post('/registrasi',[AdminController::class,'simpan']);
     Route::get('/login',[AdminController::class,'login']);
     Route::post('/login',[AdminController::class,'ceklogin']);
