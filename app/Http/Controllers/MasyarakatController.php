@@ -16,12 +16,12 @@ class MasyarakatController extends Controller
 	public function komplain(Request $request) {
 		$data = new pengaduan();
 		$data->create([
-			'tgl_pengaduan' => '2023/02/02',
+			'tgl_pengaduan' => date("Y/m/d"),
 			'nik' => $request->nik,
 			'isi_laporan' => $request->isi_laporan,
 			'foto' => $request->foto,
 			'status' => '0'
-		]);
+		]); 
 		return back()->with('pesan','Pengaduan berhasil di sampaikan');
 	}
 	public function lapor(Request $request){

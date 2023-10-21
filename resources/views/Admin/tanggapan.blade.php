@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="row justify-content-between">
-    <div class="col-4">
+    {{-- <div class="col-4">
     	<div class="card" >
 			<div class="card-body ">
 				<h3 class="card-title text-center my-1">Laporan Pengaduan</h3>
 	
-				{{-- form pengaduan masyarakat --}}
+				form pengaduan masyarakat
 				<form action="" method="POST">
 					@csrf
 					<div class="mb-3 mx-3">
@@ -33,8 +33,8 @@
 	
 			</div>
 		</div>
-    </div>
-    <div class="col-8">
+    </div> --}}
+    <div class="col-12">
 		<table class="table">
 			<thead>
 			  <tr>

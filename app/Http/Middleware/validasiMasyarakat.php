@@ -16,7 +16,7 @@ class validasiMasyarakat
     public function handle(Request $request, Closure $next): Response
     {
         if(!session('username')){
-            return redirect('login');
+            return back()->with('pesan','Anda harus login terlebih dahulu');
         }
         return $next($request);
     }

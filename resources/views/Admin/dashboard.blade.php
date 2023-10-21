@@ -10,6 +10,54 @@ Dashboard
 
 @section('content')
 
+<div class="row">
+	<div class="col-4">
+		<div class="card bg-warning text-white" style="width: 18rem;">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-auto text-end">
+						<i class="bi bi-chat-square-text" @style(['font-size:72px'])></i>
+					</div>
+					<div class="col-auto justify-content-center align-content-center flex-column d-flex">
+						<h4 class="h1">100</h4>
+						<h5 class="h5">Aduan Masuk</h5>
+					</div>
+				</div>
+			</div>
+		  </div>
+	</div>
+	<div class="col-4">
+		<div class="card bg-primary text-white" style="width: 18rem;">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-auto text-end">
+						<i class="bi bi-person-lines-fill" @style(['font-size:72px'])></i>
+					</div>
+					<div class="col-auto justify-content-center align-content-center flex-column d-flex">
+						<h4 class="h1">100</h4>
+						<h5 class="h5 ">Status Proses</h5>
+					</div>
+				</div>
+			</div>
+		  </div>
+	</div>
+	<div class="col-4">
+		<div class="card bg-success text-white" style="width: 18rem;">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-auto text-end">
+						<i class="bi bi-check-square-fill" @style(['font-size:72px'])></i>
+					</div>
+					<div class="col-auto justify-content-center align-content-center flex-column d-flex">
+						<h4 class="h1">100</h4>
+						<h5 class="h5 text-white">Status Selesai</h5>
+					</div>
+				</div>
+			</div>
+		  </div>
+	</div>
+</div>
+
 <div class="card pt-3">
 	<div class="card-body ">
 		<table class="table" id="Table_dashboard">
