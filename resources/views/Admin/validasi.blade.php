@@ -22,16 +22,8 @@
         <td>{{$item->tgl_pengaduan}}</td>
         <td>{{$item->status}}</td>
         <td>{{$item->isi_laporan}}</td>
-
         <td>
-        <div class="row justify-content-center">
-          <div class="col-4">
-          <a href="{{url('petugas/validasi/'.$item->id_pengaduan)}}" type="submit" class="btn btn-warning"><i class="bi bi-pencil-square text-light"></i></a>
-          </div>
-          <div class="col-4">
-          <a href="{{url('hapus')}}" class="btn btn-danger"><i class="bi bi-trash text-light"></i></a>
-          </div>
-        </div>
+          <a href="{{url('petugas/status/'.$item->id_pengaduan)}}" type="submit" class="btn btn-primary">Validasi</i></a>
         </td>
       </tr>
       @endforeach

@@ -3,49 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\Masyarakat;
+use App\Models\Petugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
     public function login(){
-        return view('masyarakat.login');
+        return view('login');
     }
     public function ceklogin(Request $request){
-        $data = new Masyarakat();
-        // cek username dan password ada fi database ato tidak
-        if ($data->where('username',$request->input('username'))->where('password',$request->input('password'))->exists()) {
+        $masyarakat = new Masyarakat();
+        $petugas = new Petugas();
+
+		$petugas = $petugas->where('username', $request->input('username'))->where('password', $request->input('password'));
+		$masyarakat = $masyarakat->where('username',$request->input('username'))->where('password',$request->input('password'));
+
+        if ($masyarakat->exists()) {
             session(['username'=>$request->input('username')]);
             return redirect('/');
+        }elseif ($petugas->exists()) {
+            $data = $petugas->first();
+			session(['dataPetugas' => $data]);
+			return redirect('petugas');
         }
+
         return back()->with('pesan','Username dan Password tidak terdaftar');
-
     }
-    public function registrasi(){
-        return view('masyarakat.register');
-    }
-    public function simpan(Request $request){
-        $data = new Masyarakat();
-
-        //cek data yang akan di kirim ke database
-        $validasi = $request->validate([
-            'nik'=>'required|unique:masyarakat|max:16',
-            'nama'=>'required',
-            'username'=>'required|min:6',
-            'password'=>'required|min:4',
-            'telp'=>'required|max:13'
-        ]);
-
-        //buat data ke database
-        $data->create([
-            'nik'=>$request->nik,
-            'nama'=>$request->nama,
-            'username'=>$request->username,
-            'password'=>$request->password,
-            'telp'=>$request->telp
-        ]);
-        return redirect('login')->with('pesan','Anda Berhasil Registrasi');
-    }
+    
     public function logout(Request $request){
         session()->flush();
         return back();

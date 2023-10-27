@@ -36,10 +36,10 @@
                 <ul class="navbar-nav ">
                     <li class="nav-item">
                         @if (session('username'))
-                        <a class="btn btn-primary btn-sm" href="{{ url('logout') }}" >Logout</a>
+                        <a class="btn btn-primary btn-sm" href="{{ url('logout') }}" >Keluar</a>
                         @else
-                        <a class="btn btn-primary btn-sm" href="{{ url('login') }}" >login</a>
-                            
+                        <a class="btn btn-primary btn-sm" href="{{ url('login') }}" >Masuk</a>  
+                        <a class="btn btn-primary btn-sm" href="{{ url('registrasi') }}" >Daftar</a>  
                         @endif
                     </li>
                 </ul>

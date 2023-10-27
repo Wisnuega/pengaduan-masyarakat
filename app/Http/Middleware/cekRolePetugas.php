@@ -15,7 +15,7 @@ class cekRolePetugas
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (session('dataPetuugas')->level != 'admin') {
+        if (session('dataPetugas')->level != 'admin') {
             return back();
         }
         return $next($request);

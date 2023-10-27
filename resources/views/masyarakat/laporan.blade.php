@@ -17,16 +17,18 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">NIK</th>
-                    <th scope="col">Tanggal</th>
-                    <th scope="col">Isi Laporan</th>
-                    <th scope="col">Status</th>
+                    <th scope="col" class="col-2">NIK</th>
+                    <th scope="col" class="col-2">Foto</th>
+                    <th scope="col" class="col-2">Tanggal</th>
+                    <th scope="col" class="col-2">Isi Laporan</th>
+                    <th scope="col" class="col-2">Status</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
                 @foreach ($data as $item)
                     <tr>
                         <td>{{ $item->nik }}</td>
+                        <td><img src="/fotoMasyarakat/{{$item->foto}}" alt="" style="width: 70px"></td>
                         <td>{{ $item->tgl_pengaduan }}</td>
                         <td>{{ $item->isi_laporan }}</td>
                         <td>

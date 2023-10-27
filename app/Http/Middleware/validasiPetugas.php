@@ -17,7 +17,7 @@ class validasiPetugas
     {
 
         if (!session('dataPetugas')) {
-            return redirect('petugas/login');
+            return redirect('login');
         }
         
         return $next($request);

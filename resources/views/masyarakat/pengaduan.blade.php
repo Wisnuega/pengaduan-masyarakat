@@ -1,17 +1,5 @@
 @extends('layout.masyarakatLayout')
 
-{{-- Navbar title --}}
-@section('nav1')
-Home
-@endsection
-@section('nav2')
-Pengaduan
-@endsection
-@section('nav3')
-Laporan
-@endsection
-{{-- End Navbar title --}}
-
 @section('content')
 <div class="container">
 	<div class="card mt-5 m-auto" style="width: 35rem;">
@@ -22,7 +10,7 @@ Laporan
 			<div class="alert alert-success" role="alert">{{session('pesan')}}</div>
 			@endif
 			{{-- form pengaduan masyarakat --}}
-			<form action="{{url('pengaduan')}}" method="POST">
+			<form action="{{url('pengaduan')}}" method="POST" enctype="multipart/form-data">
 				@csrf
 				<div class="mb-3 mx-3">
 					<label for="nik" class="col-sm-3 col-form-label">NIK</label>

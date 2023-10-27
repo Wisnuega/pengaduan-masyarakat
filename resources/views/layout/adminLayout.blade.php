@@ -34,22 +34,8 @@
 		</div>
 		<!-- End Logo -->
 
-		<div class="search-bar">
-			<form class="search-form d-flex align-items-center" method="POST" action="#">
-				<input type="text" name="query" placeholder="Search" title="Enter search keyword">
-				<button type="submit" title="Search"><i class="bi bi-search"></i></button>
-			</form>
-		</div>
-		<!-- End Search Bar -->
-
 		<nav class="header-nav ms-auto">
 			<ul class="d-flex align-items-center">
-
-				<li class="nav-item d-block d-lg-none">
-					<a class="nav-link nav-icon search-bar-toggle " href="#">
-						<i class="bi bi-search"></i>
-					</a>
-				</li><!-- End Search Icon-->
 
 				<li class="nav-item dropdown pe-3">
 
@@ -86,7 +72,7 @@
 						</li>
 
 						<li>
-							<a class="dropdown-item d-flex align-items-center" href="{{url('petugas/logout')}}">
+							<a class="dropdown-item d-flex align-items-center" href="{{url('logout')}}">
 								<i class="bi bi-box-arrow-right"></i>
 								<span>Sign Out</span>
 							</a>
@@ -116,6 +102,13 @@
 			</li><!-- End Dashboard Nav -->
 
 			<li class="nav-item">
+				<a class="nav-link collapsed" href="{{url('petugas/validasi')}}">
+					<i class="bi bi-envelope"></i>
+					<span>Validasi</span>
+				</a>
+			</li><!-- End Contact Page Nav -->
+
+			<li class="nav-item">
 				<a class="nav-link collapsed" href="{{url('petugas/tanggapan')}}">
 					<i class="bi bi-envelope"></i>
 					<span>Tanggapan</span>
@@ -139,7 +132,7 @@
 			</li><!-- End Login Page Nav -->
 
 			<li class="nav-item">
-				<a class="nav-link collapsed" href="{{url('petugas/login')}}">
+				<a class="nav-link collapsed" href="{{url('/login')}}">
 					<i class="bi bi-box-arrow-in-right"></i>
 					<span>Login</span>
 				</a>
@@ -156,7 +149,7 @@
 			<h1>@yield('judul')</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item" ><a href="index.html">Home</a></li>
 					<li class="breadcrumb-item active">Dashboard</li>
 				</ol>
 			</nav>

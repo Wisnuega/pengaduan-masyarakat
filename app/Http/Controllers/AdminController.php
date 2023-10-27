@@ -7,50 +7,56 @@ use App\Models\Pengaduan;
 use App\Models\Petugas;
 use App\Models\Tanggapan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-	public function index() {
+	public function index()
+	{
 		$data = new Pengaduan();
-		
-		return view('Admin.dashboard', ['data' => $data->all()]);
+		$status = [
+			'masuk' => DB::table('pengaduan')->where('status', '0')->count(),
+			'proses' => DB::table('pengaduan')->where('status', 'proses')->count(),
+			'selesai' => DB::table('pengaduan')->where('status', 'selesai')->count()
+		];
+		return view('Admin.dashboard', ['data' => $data, 'status' => $status]);
 	}
-	public function validasiStatus($id){
+	public function validasi()
+	{
 		$data = new Pengaduan();
-		$data->find($id)->update(['status'=>'proses']);
-		return back();
+		return view('Admin.validasi', ['data' => $data->where('status', '0')->get()]);
 	}
-	public function tanggapan() {
+	public function validasiStatus($id)
+	{
+		$data = new Pengaduan();
+		$data->find($id)->update(['status' => 'proses']);
+		return back()->with('pesan','Validasi berhasil Emam Emih');
+	}
+	public function tanggapan()
+	{
 		$data = new Pengaduan();
 
-		return view('Admin.tanggapan',['data'=>$data->where('status','proses')->get()]);
+		return view('Admin.tanggapan', ['data' => $data->where('status', 'proses')->get()]);
 	}
-	public function registrasi() {
-		return view('Admin.registrasi');
+	public function balas()
+	{
+		$data = new Pengaduan();
+
+		return view('Admin.tanggapan', ['data' => $data->all()]);
 	}
-	public function simpan(Request $request){
+	public function registrasi()
+	{
 		$data = new Petugas();
-
+		return view('Admin.registrasi',['data'=>$data->all()]);
+	}
+	public function simpan(Request $request)
+	{
+		$data = new Petugas();
 		$data->create($request->all());
-		return redirect('petugas/login');
-	}
-	public function login() {
-		return view('Admin.login');
-	}
-	public function ceklogin(Request $request){
-		$data = new Petugas();
-		$data =  $data->where('username',$request->input('username'))->where('password',$request->input('password'));
-		if ($data->exists()) {
-			$data = $data->first();
-			session(['dataPetugas'=>$data]);
-			return redirect('petugas');
-		}
-	}
-	public function logout(){
-		session()->flush();
 		return back();
 	}
-	public function laporan() {
+	public function laporan()
+	{
 		return view('Admin.laporan');
 	}
 }

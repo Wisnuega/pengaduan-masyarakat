@@ -19,8 +19,8 @@ Dashboard
 						<i class="bi bi-chat-square-text" @style(['font-size:72px'])></i>
 					</div>
 					<div class="col-auto justify-content-center align-content-center flex-column d-flex">
-						<h4 class="h1">100</h4>
-						<h5 class="h5">Aduan Masuk</h5>
+						<h4 class="h1">{{$status['masuk']}}</h4>
+						<h5 class="h5">Status Masuk</h5>
 					</div>
 				</div>
 			</div>
@@ -34,7 +34,7 @@ Dashboard
 						<i class="bi bi-person-lines-fill" @style(['font-size:72px'])></i>
 					</div>
 					<div class="col-auto justify-content-center align-content-center flex-column d-flex">
-						<h4 class="h1">100</h4>
+						<h4 class="h1">{{$status['proses']}}</h4>
 						<h5 class="h5 ">Status Proses</h5>
 					</div>
 				</div>
@@ -49,7 +49,7 @@ Dashboard
 						<i class="bi bi-check-square-fill" @style(['font-size:72px'])></i>
 					</div>
 					<div class="col-auto justify-content-center align-content-center flex-column d-flex">
-						<h4 class="h1">100</h4>
+						<h4 class="h1">{{$status['selesai']}}</h4>
 						<h5 class="h5 text-white">Status Selesai</h5>
 					</div>
 				</div>
@@ -71,7 +71,7 @@ Dashboard
 				</tr>
 			</thead>
 			<tbody class="table-group-divider">
-				@foreach ($data as $item)
+				@foreach ($data->all() as $item)
 				<tr>
 					<td scope="row">{{$item->id_pengaduan}}</td>
 					<td>{{$item->tgl_pengaduan}}</td>
