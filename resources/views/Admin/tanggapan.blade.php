@@ -12,12 +12,12 @@
 					@csrf
 					<div class="mb-3 mx-3">
 						<label for="id_pengaduan" class="col-sm-8 col-form-label">ID Pengaduan</label>
-						<input type="number" class="form-control" id="id_pengaduan" name="id_pengaduan">
+						<input type="number" class="form-control" id="id_pengaduan" name="id_pengaduan" value="{{$tanggap->id_pengaduan}}">
 					</div>
 
 					<div class="mb-3 mx-3">
 						<label for="nik" class="col-sm-3 col-form-label">NIK</label>
-						<input type="number" class="form-control" id="nik" name="nik">
+						<input type="number" class="form-control" id="nik" name="nik" value="{{$tanggap->nik}}" >
 					</div>
 	
 					<div class="mb-3 mx-3">
@@ -26,7 +26,7 @@
 					</div>
 					<div class="mb-3 mx-3">
 						<label for="tanggapan" class="col-sm-5 col-form-label">Tanggapan</label>
-						<textarea class="form-control" id="tanggapan" name="tanggapan" rows="3"></textarea>
+						<textarea class="form-control" id="tanggapan" name="tanggapan" rows="3">{{$tanggap->isi_laporan}}</textarea>
 					</div>
 	
 					<div class="mb-0 mx-3 ">
@@ -57,7 +57,7 @@
 				  <td>{{$item->isi_laporan}}</td>
 
 				  <td>
-					<a href="{{url('petugas/tanggapan/'.$item->id_pengaduan)}}" class="btn btn-warning"><i class="bi bi-pencil-square text-light"></i></a>
+					<a href="{{url('petugas/tanggapin/'.$item->id_pengaduan)}}" class="btn btn-warning"><i class="bi bi-pencil-square text-light"></i></a>
 				  </td>
 				</tr>
 				@endforeach

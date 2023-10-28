@@ -5,33 +5,53 @@
 @endsection
 
 @section('content')
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody class="table-group-divider">
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
+<div class="container pt-4">
+
+
+  <form action="{{ url('petugas/laporan') }}" method="get">
+      <select class="my-3" name="pilih" id="autoSizingSelect" style="width: 120px; height: 35px; border-radius: 5px">
+          <option value="0">Tertunda</option>
+          <option value="proses">Proses</option>
+          <option value="selesai">selesai</option>
+      </select>
+      <button type="submit" class=" btn-info"
+          style="width: 75px; height: 35px;  border-radius: 5px; background-color: #9DDBE9;">Filter</button>
+  </form> 
+
+  <table class="table">
+      <thead>
+          <tr>
+              <th scope="col" class="col-2">NIK</th>
+              <th scope="col" class="col-2">Foto</th>
+              <th scope="col" class="col-2">Tanggal</th>
+              <th scope="col" class="col-2">Isi Laporan</th>
+              <th scope="col" class="col-2">Status</th>
+          </tr>
+      </thead>
+      <tbody class="table-group-divider">
+          @foreach ($data as $item)
+              <tr>
+                  <td>{{ $item->nik }}</td>
+                  <td><img src="/fotoMasyarakat/{{$item->foto}}" alt="" style="width: 70px"></td>
+                  <td>{{ $item->tgl_pengaduan }}</td>
+                  <td>{{ $item->isi_laporan }}</td>
+                  <td>
+                      @switch($item->status)
+                          @case('proses')
+                              <button type="button" class="btn btn-warning">{{ $item->status }}</button>
+                          @break
+
+                          @case('selesai')
+                              <button type="button" class="btn btn-warning">{{ $item->status }}</button>
+                          @break
+
+                          @default
+                              <button type="button" class="btn btn-warning">Tertunda</button>
+                      @endswitch
+                  </td>
+              </tr>
+          @endforeach
+      </tbody>
   </table>
+</div>
 @endsection

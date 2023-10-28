@@ -29,19 +29,20 @@ Route::get('/',[MasyarakatController::class,'index']);
 Route::get('pengaduan',[MasyarakatController::class,'pengaduan'])->middleware(validasiMasyarakat::class);
 Route::post('pengaduan',[MasyarakatController::class,'komplain']);
 Route::get('laporan',[MasyarakatController::class,'lapor'])->middleware(validasiMasyarakat::class);
-Route::get('filter',[MasyarakatController::class,'lapor']);
+Route::get('filter',[MasyarakatController::class,'lapor'])->middleware(validasiMasyarakat::class);
 Route::get('registrasi',[MasyarakatController::class,'registrasi']);
 Route::post('registrasi',[MasyarakatController::class,'simpan']);
 
 // Data Admin
 Route::prefix('petugas')->group(function () {
     Route::get('/',[AdminController::class,'index'])->middleware(validasiPetugas::class);
-    Route::get('/validasi',[AdminController::class,'validasi']);
-    Route::get('/status/{id}',[AdminController::class,'validasiStatus']);
-    Route::get('/tanggapan',[AdminController::class,'tanggapan']);
+    Route::get('/validasi',[AdminController::class,'validasi'])->middleware(validasiPetugas::class);
+    Route::get('/status/{id}',[AdminController::class,'validasiStatus'])->middleware(validasiPetugas::class);
+    Route::get('/tanggapan',[AdminController::class,'tanggapan'])->middleware(validasiPetugas::class);
+    Route::get('/tanggapin/{id}',[AdminController::class,'tanggapin'])->middleware(validasiPetugas::class);
     Route::post('/tanggapan/{id}',[AdminController::class,'balas']);
-    Route::get('/registrasi',[AdminController::class,'registrasi'])->middleware(cekRolePetugas::class);
+    Route::get('/registrasi',[AdminController::class,'registrasi'])->middleware(validasiPetugas::class,cekRolePetugas::class);
     Route::post('/registrasi',[AdminController::class,'simpan']);
-    Route::get('/laporan',[AdminController::class,'laporan']);
+    Route::get('/laporan',[AdminController::class,'laporan'])->middleware([validasiPetugas::class,cekRolePetugas::class]);
 });
 

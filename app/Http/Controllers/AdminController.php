@@ -35,8 +35,12 @@ class AdminController extends Controller
 	public function tanggapan()
 	{
 		$data = new Pengaduan();
-
 		return view('Admin.tanggapan', ['data' => $data->where('status', 'proses')->get()]);
+	}
+	public function tanggapin($id)
+	{
+		$data = new Pengaduan();
+		return view('Admin.tanggapan', ['data' => $data->where('status', 'proses')->get(),'tanggap'=>$data->find($id)]);
 	}
 	public function balas()
 	{
@@ -55,8 +59,10 @@ class AdminController extends Controller
 		$data->create($request->all());
 		return back();
 	}
-	public function laporan()
+	public function laporan(Request $request)
 	{
-		return view('Admin.laporan');
+		$data = new Pengaduan();
+		$status = $request->input('pilih')?$request->input('pilih'):'0';
+		return view('Admin.laporan',['data'=>$data->where('status',$status)->get()]);
 	}
 }
