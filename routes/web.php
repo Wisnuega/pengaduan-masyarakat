@@ -40,7 +40,7 @@ Route::prefix('petugas')->group(function () {
     Route::get('/status/{id}',[AdminController::class,'validasiStatus'])->middleware(validasiPetugas::class);
     Route::get('/tanggapan',[AdminController::class,'tanggapan'])->middleware(validasiPetugas::class);
     Route::get('/tanggapin/{id}',[AdminController::class,'tanggapin'])->middleware(validasiPetugas::class);
-    Route::post('/tanggapan/{id}',[AdminController::class,'balas']);
+    Route::post('/tanggapin/{id}',[AdminController::class,'balas']);
     Route::get('/registrasi',[AdminController::class,'registrasi'])->middleware(validasiPetugas::class,cekRolePetugas::class);
     Route::post('/registrasi',[AdminController::class,'simpan']);
     Route::get('/laporan',[AdminController::class,'laporan'])->middleware([validasiPetugas::class,cekRolePetugas::class]);

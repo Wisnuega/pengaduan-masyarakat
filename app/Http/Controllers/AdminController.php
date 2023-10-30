@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pengaduan;
 
 use App\Models\Petugas;
+use App\Models\Pengaduan;
 use App\Models\Tanggapan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,11 +42,16 @@ class AdminController extends Controller
 		$data = new Pengaduan();
 		return view('Admin.tanggapan', ['data' => $data->where('status', 'proses')->get(),'tanggap'=>$data->find($id)]);
 	}
-	public function balas()
+	public function balas(Request $request)
 	{
-		$data = new Pengaduan();
-
-		return view('Admin.tanggapan', ['data' => $data->all()]);
+		$data = new Tanggapan();
+		$data->create([
+		    'id_pengaduan' => $request->id_pengaduan,
+		    'tgl_tanggapan' => date("y/m/d"),
+		    'tanggapan' => $request->tanggapan,
+		    'id_petugas' => session('dataPetugas')->id_petugas
+		  ]);
+		  return redirect('petugas/tanggapan');
 	}
 	public function registrasi()
 	{
