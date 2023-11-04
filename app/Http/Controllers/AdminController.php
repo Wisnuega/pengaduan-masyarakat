@@ -35,7 +35,7 @@ class AdminController extends Controller
 	public function tanggapan()
 	{
 		$data = new Pengaduan();
-		return view('Admin.tanggapan', ['data' => $data->where('status', 'proses')->get()]);
+		return view('Admin.tanggapan', ['data' => $data->where('status', 'proses')->get(),'tanggap'=>'']);
 	}
 	public function tanggapin($id)
 	{
@@ -44,13 +44,15 @@ class AdminController extends Controller
 	}
 	public function balas(Request $request)
 	{
-		$data = new Tanggapan();
-		$data->create([
+		$aduan = new Pengaduan();
+		$tanggap = new Tanggapan();
+		$tanggap->create([
 		    'id_pengaduan' => $request->id_pengaduan,
 		    'tgl_tanggapan' => date("y/m/d"),
 		    'tanggapan' => $request->tanggapan,
 		    'id_petugas' => session('dataPetugas')->id_petugas
 		  ]);
+		$aduan->find($request->id_pengaduan)->update(['status' => 'selesai ']);
 		  return redirect('petugas/tanggapan');
 	}
 	public function registrasi()
